@@ -19,7 +19,7 @@ public class WebClientConfig {
     public WebClient userServiceWebClient(WebClient.Builder webClientBuilder) {
         // FIX: The base URL must be in lowercase ("userservice") to match the
         // spring.application.name of the User Service registration in Eureka.
-        return webClientBuilder.baseUrl("http://user-service")
+        return webClientBuilder.baseUrl("http://USER-SERVICE")
                 .build();
     }
 }

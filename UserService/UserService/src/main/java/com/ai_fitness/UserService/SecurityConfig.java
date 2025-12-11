@@ -1,4 +1,4 @@
-package com.ai_fitness.UserService.config;
+package com.ai_fitness.UserService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

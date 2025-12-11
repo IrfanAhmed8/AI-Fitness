@@ -13,7 +13,9 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -78,5 +80,12 @@ public class ActivityService {
         response.setCreatedAt(activity.getCreatedAt());
         response.setUpdatedAt(activity.getUpdatedAt());
         return response;
+    }
+
+    public List<ActivityResponse> getAllActivities(String userId) {
+        List<Activity> activityList=activityRepository.findByUserId(userId);
+        return activityList.stream()
+                .map(this::buildActivityResponse)
+                .collect(Collectors.toList());
     }
 }

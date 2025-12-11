@@ -15,7 +15,7 @@ public class UserService {
 
     public UserResponse register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            User ExistingUser = userRepository.findByEmailId(request.getEmail);
+            User ExistingUser = userRepository.findByEmail(request.getEmail());
 
             UserResponse userResponse = new UserResponse();
             userResponse.setId(ExistingUser.getId());
@@ -30,6 +30,7 @@ public class UserService {
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
+        user.setKeyCloakId(request.getKeyCloakId());
 
         User savedUser = userRepository.save(user);
 
@@ -37,6 +38,7 @@ public class UserService {
         userResponse.setId(savedUser.getId());
         userResponse.setName(savedUser.getName());
         userResponse.setEmail(savedUser.getEmail());
+        userResponse.setKeyCloakId(savedUser.getKeyCloakId());
         userResponse.setRole(savedUser.getRole());
         userResponse.setCreatedAt(savedUser.getCreatedAt());
         userResponse.setUpdatedAt(savedUser.getUpdatedAt());

@@ -1,4 +1,4 @@
-package com.ai_fitness.UserService.models;
+package com.ai_fitness.Api_Gateway.keycloakService;
 
 import lombok.Data;
 
